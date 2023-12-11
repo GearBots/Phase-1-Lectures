@@ -68,6 +68,157 @@ const inventory = [
 
         }
     ]
+    function priceFormatter(book){
+        console.log(book)
+        return `$${book.price}`
+    }
+
+    const priceFormatter2 = book  => {
+        console.log(book)
+        return `$${book.price}`
+    }
+    console.log(priceFormatter(inventory[0]))
+
+    console.log(priceFormatter2(inventory[1]))
+
+    const titleAndAuthor = book => `Title ${book.title} by ${book.author}`
+    console.log(titleAndAuthor(inventory[0]))
+
+    const bookOnSale = book => `Title: ${book.title} is on sale!`
+    console.log(bookOnSale(inventory[0]))
+
+    const discountPrice = (discount, book) => book.price / discount
+    console.log(discountPrice(2.00, inventory[0]))
+
+    const newTitle = "The JavaScript Cook Book"
+
+    function buildBook(title, price, author, imageUrl){
+        const obj = {}
+        obj.title = title
+        obj.price = price
+        obj.author = author
+        obj.imageUrl = imageUrl
+        obj.reviews = []
+        obj.inventory = 0
+        obj.id = inventory.length + 1
+
+        if(!imageUrl){
+            const defaultImage = "placeholder.jpg"
+            obj.imageUrl = defaultImage
+        }
+        else{
+            obj.imageUrl = imageUrl
+        }
+        return obj
+    }
+
+    inventory.push(buildBook(newTitle, 25, "Shelly Powers"))
+    console.log(inventory)
+
+    function mapOverArray(book, callback){
+        const newInventory = []
+        for(let item of book){
+            console.log(item)
+            newInventory.push(callback(item))
+        }
+        return newInventory
+    }
+    console.log(mapOverArray(inventory, (book) => book.title))
+    console.log(mapOverArray(inventory, (book) => book.author))
+    console.log(mapOverArray(inventory, titleAndAuthor))
+    console.log(mapOverArray(inventory, priceFormatter))
+
+
+    let arr = [1,2,3,4,5,6,7,8,9]
+    for (let i =0; i< arr.length; i++){
+        arr[i] = arr[i] * 3
+    }
+    console.log(arr)
+
+    let arr2 = [2,4,6,8,10,12]
+    let mappedArray = arr2.map((num)=>{
+        return num * 3
+    })
+    console.log(mappedArray)
+
+
+    let users = [
+        {
+            firstname: "Kyle",
+            lastname: "Geary"
+        },
+        {
+            firstname: "David",
+            lastname: "Doan"
+        }
+    ]
+    
+    let fullnames = users.map((names)=>{
+        console.log(names)
+        return `${names.firstname} ${names.lastname}`
+    })
+    console.log(fullnames)
+
+
+    // console.log(inventory[0].title)
+
+
+
+
+    // function sayHi(){
+    //     return "Hi"
+    // }
+
+    // console.log(sayHi())
+
+    // function sayHello(){
+    //     console.log("Hello World!")
+    // }
+    // sayHello()
+
+    // function squareNumber(num){
+    //     return num * num
+    // }
+    // console.log(squareNumber(20))
+
+    // function addition(num1, num2){
+    //     console.log(num1 + num2)
+    //     return num1 + num2
+    // }
+    // addition(10,10)
+
+    // const favFood = food => `My favorite food is ${food}`
+    // console.log(favFood("pizza"))
+
+    // function greeting(name, callback){
+    //     console.log("Hello")
+    //     callback(name)
+    // }
+
+    // function sayName(name){
+    //     console.log("Hello" + name)
+    //     return "Hello" + name
+    // }
+
+    // function sayGoodbye(name){
+    //     console.log("Goodbye" + name)
+    //     return "Goodbye" + name
+    // }
+
+    // greeting("kyle", sayName)
+    // greeting("kyle", sayGoodbye)
+
+
+    // function greeting() {
+    //     if(true){
+    //         let name = "Kyle"
+    //         console.log("Hello" + name)
+    //         console.log(name)
+    //     }
+        
+    // }
+
+    // let firstName = "Kyle"//global scope (must be before code that its called upon)
 
 
 
